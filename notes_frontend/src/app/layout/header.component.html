@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="header-section">
+    <span class="app-title">Notes Organizer</span>
+  </div>
+  <div class="header-section actions">
+    <button
+      type="button"
+      aria-label="Add note"
+      title="Add note"
+      class="main-action-btn"
+      (click)="addNote.emit()"
+    >
+      <span class="material-symbols-outlined">note_add</span>
+      <span class="hide-on-mobile">&nbsp;New Note</span>
+    </button>
+  </div>
+</header>

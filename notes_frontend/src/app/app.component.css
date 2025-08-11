@@ -1,16 +1,46 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #ffffff;
+/* Core layout using CSS flexbox for minimal, responsive design */
+:root {
+  --color-primary: #1976d2;
+  --color-accent: #fbc02d;
+  --color-secondary: #424242;
+  --bg-color: #fff;
+  --sidebar-width: 240px;
 }
 
-h1 {
-  color: #1976d2;
-  font-size: 3rem;
-  font-weight: 500;
-  margin: 0;
-  text-align: center;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-color);
+}
+
+.app-content {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  background: var(--bg-color);
+}
+
+main.main-panel {
+  flex: 1 1 0;
+  padding: 2.5vw 3vw;
+  min-width: 0;
+  overflow-x: hidden;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 720px) {
+  .app-content {
+    flex-direction: column;
+  }
+  app-sidebar {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: unset !important;
+  }
+  main.main-panel {
+    padding: 1vw;
+  }
 }

@@ -1,0 +1,113 @@
+.note-editor-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+  background: #f8fcff;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px #e0e6ef25;
+  padding: 1.3em 1.5em 1em 1.5em;
+  flex: 1 1 0;
+  min-width: 190px;
+  max-width: 840px;
+}
+.note-title-input {
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 1.2em;
+  font-weight: 600;
+  width: 100%;
+  margin-bottom: 0.25em;
+  padding: 0.5em 0.5em 0.5em 0;
+  border-bottom: 1.7px solid #edf2fa;
+  outline: none;
+  transition: border 0.18s;
+}
+.note-title-input:focus {
+  border-bottom: 1.7px solid var(--color-primary);
+}
+
+.note-content-input {
+  border: 1.4px solid #e3e9f5;
+  border-radius: 6px;
+  background: #fff;
+  min-height: 170px;
+  width: 100%;
+  padding: 0.7em 0.85em;
+  font-size: 1.05em;
+  font-family: inherit;
+  color: #222;
+  outline: none;
+  resize: vertical;
+  transition: border 0.16s;
+}
+.note-content-input:focus {
+  border: 1.7px solid var(--color-primary);
+}
+
+.editor-actions {
+  display: flex;
+  gap: 1.1em;
+  margin-top: 0.5em;
+}
+.save-btn,
+.delete-btn,
+.cancel-btn {
+  border: none;
+  outline: none;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.47em 1em;
+  border-radius: 3em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 1px 2px #1976d222;
+  transition: background 0.18s;
+}
+.save-btn {
+  background: var(--color-primary);
+}
+.save-btn:hover,
+.save-btn:focus {
+  background: #005bb6;
+}
+.delete-btn {
+  background: #fff;
+  color: #b71c1c;
+  border: 1.5px solid #b71c1c;
+}
+.delete-btn:hover,
+.delete-btn:focus {
+  background: #ffd8d8;
+}
+.cancel-btn {
+  background: transparent;
+  color: #888;
+  border: 1.2px solid #ccc;
+}
+.cancel-btn:hover,
+.cancel-btn:focus {
+  background: #f8f8f8;
+}
+
+.empty-editor {
+  margin: 3em auto;
+  text-align: center;
+  color: #aaa;
+}
+.center-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  font-size: 1.05em;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-size: 1.3em;
+}

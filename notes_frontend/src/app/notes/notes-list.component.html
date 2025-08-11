@@ -1,0 +1,32 @@
+<div class="notes-list-container">
+  <div class="notes-list-actions">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search notes..."
+      [value]="searchText"
+      (input)="emitSearch($event)"
+    />
+    <button
+      type="button"
+      class="add-note-btn"
+      title="Add note"
+      (click)="addNote.emit()"
+    >
+      <span class="material-symbols-outlined">note_add</span>
+      <span class="hide-on-mobile">&nbsp;New</span>
+    </button>
+  </div>
+  <ul class="notes-list">
+    <li
+      *ngFor="let note of notes"
+      [class.selected]="selectedNote?.id===note.id"
+      (click)="selectNote.emit(note)"
+    >
+      <div class="note-title">{{ note.title || 'Untitled note' }}</div>
+      <div class="note-preview">{{ note.content | slice:0:60 }}</div>
+      <div class="note-date">{{ note.updatedAt | date: 'short' }}</div>
+    </li>
+    <li *ngIf="!notes.length" class="empty-notes">No notes found.</li>
+  </ul>
+</div>

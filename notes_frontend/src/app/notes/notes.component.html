@@ -1,0 +1,23 @@
+<section *ngIf="loading" class="loading-overlay">
+  <div class="loader"></div>
+</section>
+<div class="notes-panel" *ngIf="!loading">
+  <div class="notes-list-section">
+    <app-notes-list
+      [notes]="filteredNotes"
+      [selectedNote]="selectedNote"
+      [searchText]="searchText"
+      (search)="doSearch($event)"
+      (selectNote)="selectNote($event)"
+      (addNote)="createNote()"
+    ></app-notes-list>
+  </div>
+  <div class="notes-editor-section">
+    <app-note-editor
+      [note]="selectedNote"
+      (save)="onSave($event)"
+      (delete)="onDelete($event)"
+      (cancel)="selectedNote = null"
+    ></app-note-editor>
+  </div>
+</div>

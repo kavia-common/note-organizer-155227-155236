@@ -1,0 +1,54 @@
+<div class="note-editor-container" *ngIf="note">
+  <input
+    type="text"
+    class="note-title-input"
+    placeholder="Title"
+    maxlength="80"
+    [(ngModel)]="titleValue"
+    autocomplete="off"
+    spellcheck="true"
+  />
+  <textarea
+    class="note-content-input"
+    placeholder="Write your note here..."
+    [(ngModel)]="contentValue"
+    rows="11"
+    maxlength="2048"
+    spellcheck="true"
+  ></textarea>
+  <div class="editor-actions">
+    <button
+      class="save-btn"
+      [disabled]="!titleValue.trim() && !contentValue.trim()"
+      (click)="doSave()"
+      title="Save note"
+    >
+      <span class="material-symbols-outlined">save</span>
+      <span class="hide-on-mobile">Save</span>
+    </button>
+    <button
+      class="delete-btn"
+      *ngIf="note.id"
+      (click)="doDelete()"
+      title="Delete note"
+    >
+      <span class="material-symbols-outlined">delete</span>
+      <span class="hide-on-mobile">Delete</span>
+    </button>
+    <button
+      class="cancel-btn"
+      (click)="cancel.emit()"
+      *ngIf="!note.id"
+      title="Cancel"
+    >
+      <span class="material-symbols-outlined">close</span>
+      <span class="hide-on-mobile">Cancel</span>
+    </button>
+  </div>
+</div>
+<div class="empty-editor" *ngIf="!note">
+  <div class="center-text">
+    <span class="material-symbols-outlined" style="font-size:48px;">edit_note</span>
+    <div>Select a note or add a new one to start editing.</div>
+  </div>
+</div>

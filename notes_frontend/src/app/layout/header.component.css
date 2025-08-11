@@ -1,0 +1,62 @@
+/* Minimalistic header bar. Uses primary and accent colors. */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 2vw;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: inherit;
+  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.05);
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.actions {
+  gap: 1rem;
+}
+
+.main-action-btn {
+  border: none;
+  outline: none;
+  background: var(--color-accent);
+  color: var(--color-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5em 1.15em;
+  border-radius: 4em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 1px 2px rgba(251, 192, 45, 0.1);
+  transition: background 0.18s;
+}
+.main-action-btn:hover,
+.main-action-btn:focus {
+  background: #fff4cb;
+}
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+  font-size: 1.35em;
+}
+
+@media (max-width: 480px) {
+  .hide-on-mobile {
+    display: none;
+  }
+  .header {
+    padding: 0 1vw;
+  }
+}
