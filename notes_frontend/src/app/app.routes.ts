@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
+import { NotesComponent } from './notes/notes.component';
 
 export const routes: Routes = [
-  // Route everything to the root component, can be split further if needed
-  { path: '', component: undefined }
+  // Root route renders notes UI (main panel)
+  { path: '', component: NotesComponent }
 ];

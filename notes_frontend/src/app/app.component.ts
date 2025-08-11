@@ -3,7 +3,6 @@ import { HeaderComponent } from './layout/header.component';
 import { SidebarComponent } from './layout/sidebar.component';
 import { NotesComponent } from './notes/notes.component';
 
-
 // PUBLIC_INTERFACE
 @Component({
   selector: 'app-root',

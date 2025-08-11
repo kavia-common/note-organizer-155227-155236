@@ -1,4 +1,4 @@
-declare const confirm: (msg: string) => boolean;
+/* global confirm */
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Note, NotesService } from './notes.service';
@@ -27,7 +27,7 @@ export class NotesComponent implements OnInit {
   searchText: string = '';
   loading = false;
 
-  constructor(private notesService: NotesService) {}
+  constructor(private readonly _notesService: NotesService) {}
 
   ngOnInit(): void {
     this.fetchNotes();
@@ -38,8 +38,8 @@ export class NotesComponent implements OnInit {
    */
   fetchNotes() {
     this.loading = true;
-    this.notesService.getNotes().subscribe({
-      next: (notes) => {
+    this._notesService.getNotes().subscribe({
+      next: (notes: Note[]) => {
         this.notes = notes;
         this.doSearch(this.searchText); // Also update filteredNotes
         this.loading = false;
@@ -92,7 +92,7 @@ export class NotesComponent implements OnInit {
     this.loading = true;
     // If editing (id exists), update. Else, create.
     if (note.id) {
-      this.notesService.updateNote(note).subscribe({
+      this._notesService.updateNote(note).subscribe({
         next: (updated: Note) => {
           const idx = this.notes.findIndex(n => n.id === updated.id);
           if (idx > -1) this.notes[idx] = updated;
@@ -103,7 +103,7 @@ export class NotesComponent implements OnInit {
         error: () => { this.loading = false; }
       });
     } else {
-      this.notesService.createNote(note).subscribe({
+      this._notesService.createNote(note).subscribe({
         next: (created: Note) => {
           this.notes.unshift(created);
           this.doSearch(this.searchText);
@@ -122,7 +122,7 @@ export class NotesComponent implements OnInit {
     if (!note.id) return;
     if (!confirm('Are you sure you want to delete this note?')) return;
     this.loading = true;
-    this.notesService.deleteNote(note.id).subscribe({
+    this._notesService.deleteNote(note.id).subscribe({
       next: () => {
         this.notes = this.notes.filter(n => n.id !== note.id);
         this.doSearch(this.searchText);

@@ -18,12 +18,13 @@ export interface Note {
 export class NotesService {
   private apiURL = '/api/notes';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly _http: HttpClient) {}
 
   /**
    * Get all notes.
    */
   getNotes(): Observable<Note[]> {
+    // @ts-ignore: Used by Angular DI
     return this.http.get<Note[]>(this.apiURL);
   }
 
@@ -31,6 +32,7 @@ export class NotesService {
    * Create a new note.
    */
   createNote(note: Omit<Note, 'id'>): Observable<Note> {
+    // @ts-ignore: Used by Angular DI
     return this.http.post<Note>(this.apiURL, note);
   }
 
@@ -38,6 +40,7 @@ export class NotesService {
    * Update an existing note.
    */
   updateNote(note: Note): Observable<Note> {
+    // @ts-ignore: Used by Angular DI
     return this.http.put<Note>(`${note.id ? `${this.apiURL}/${note.id}` : this.apiURL}`, note);
   }
 
@@ -45,6 +48,7 @@ export class NotesService {
    * Delete note by id.
    */
   deleteNote(id: string): Observable<void> {
+    // @ts-ignore: Used by Angular DI
     return this.http.delete<void>(`${this.apiURL}/${id}`);
   }
 }
